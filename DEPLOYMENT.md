@@ -7,7 +7,7 @@ Rove2trove has two deployment modes from one source tree:
 
 ## GitHub Pages
 
-Repository: `vineet2588/rove2trove`. The `main` branch triggers `.github/workflows/pages.yml`, which installs build dependencies, runs server tests, builds the static app, then publishes through GitHub Pages. Pages must use GitHub Actions as its publishing source. The expected repository-site URL is `https://vineet2588.github.io/rove2trove/`.
+Repository: `vineet2588/rove2trove`. The `main` branch triggers `.github/workflows/pages.yml`, which installs build dependencies, runs server tests, builds the static app, then publishes through GitHub Pages. Pages must use GitHub Actions as its publishing source. The live repository-site URL is `https://vineet2588.github.io/rove2trove/`.
 
 All application and asset paths are relative, so the app also works under the repository subdirectory. `npm run preview:pages` serves that same path locally at `http://127.0.0.1:4173/rove2trove/`.
 
@@ -26,3 +26,7 @@ GitHub Pages has no Node/API runtime. The public version is explicitly a demo wi
 ## Updating
 
 Edit source under `public/` and `server/`, run tests and `npm run build`, then push to `main`. The workflow rebuilds optimized WebP photos and publishes. `dist/` and `.env` are ignored. Service-worker cache versions are generated from the build content so a new build replaces old caches. Generated images remain attributed to the local prompt record in `public/assets/photos/PROMPTS.md`.
+
+### Confirmed browser verification
+
+Chromium and Safari/WebKit passed all seven viewport sizes. A temporary official Microsoft Edge package was downloaded and verified, but this Mac could not launch it (native profile/path error); Edge-specific execution remains unverified. Edge uses Chromium technologies, and the Chromium engine checks passed. Firefox also could not launch in this host environment. These host failures are not website test failures, but no native Edge/Firefox pass is claimed.
