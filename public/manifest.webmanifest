@@ -1,0 +1,17 @@
+{
+  "id":"./",
+  "name":"Rove2trove — Search to Treasure",
+  "short_name":"Rove2trove",
+  "description":"Thoughtful gift discovery, wherever you are.",
+  "lang":"en",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "background_color":"#faf8f2",
+  "theme_color":"#163f35",
+  "orientation":"any",
+  "icons":[
+    {"src":"./assets/icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"./assets/icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"}
+  ]
+}

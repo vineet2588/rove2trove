@@ -1,0 +1,22 @@
+# Verification
+
+Verified locally on 22 October 2026.
+
+- `npm test`: 9 passing test groups. Covers input enums/ranges and dates, age/type/budget/currency matching, AI fallback and successful mock responses, static asset isolation, origin rejection, method rejection, request size limits, and hourly rate limiting.
+- `PLAYWRIGHT_BROWSERS_PATH=/tmp/rove2trove-browsers node scripts/browser-check.mjs`: passed in Chromium at 1440px desktop and 390px mobile widths. Covers the three-step questionnaire, missing-interest validation, recommendation results, gift type filters, price sort, save/reload/remove persistence, empty shortlist and no-match state. No JavaScript errors or horizontal overflow at either tested width.
+- Desktop and mobile full-page screenshots visually inspected for layout, artwork, approved logo proportions and result card rendering.
+- JavaScript syntax checks passed.
+
+The preview is local at http://127.0.0.1:3000. No external publication was performed. OpenAI calls were tested through controlled mock responses; no paid authenticated API call was made. No live retailer or delivery integrations exist. Keyboard semantics and focus support are implemented; no screen reader or formal accessibility audit was performed.
+
+Category expansion: all 18 interests have matching demo ideas. Combined personality scoring and invalid trait rejection are covered by server tests. `scripts/categories-check.mjs` passed at 1440px and 390px, including all 18 category controls, 12 checkbox traits, required trait validation, back/forward selection persistence and successful submission of eight interests with three personality traits. Existing browser regression checks also passed.
+
+Shopping destinations: added tests for every demo gift across five countries, multiple HTTPS destinations, category-specific merchants, country mapping and rejection of unsupported countries. Browser shopping checks cover desktop/mobile panel opening, country switching, keyboard activation/Escape, shortlist access after reload and separation of save actions from shopping. External merchant inventory and individual search results remain unverified; several merchants restrict automated fetching.
+
+Global destinations: country controls now share all 249 ISO countries/territories. Validation and matching accept supported budget currencies independently of destination. All catalog gifts were tested for multiple safe shopping destinations across the complete country list. Gifts outside the retained regional storefronts use international marketplaces with shipping checks. Photorealistic gift concepts are AI-generated local assets and remain labeled as illustrative.
+
+Completed photo QA: all 20 local PNGs loaded successfully in `scripts/photo-gallery-check.mjs`; the full gallery was visually inspected for subject matching and photographic style. `scripts/photos-countries-check.mjs` passed at 1440px and 390px with loaded gift photos, no SVG gift illustrations, independent USD budgeting for Japan, all 249 countries in both selectors and Brazil shopping links. `scripts/shopping-check.mjs` passed after the photo changes, covering shopping dialogs, country switching, keyboard controls, saved treasures and reload persistence. Photorealistic imagery appears in recommendations, saved treasures and shopping panels.
+
+Recommendation filtering fix: the server now returns all eligible catalog ideas rather than truncating to six before client-side type filtering. Ten server test groups pass, including a regression covering experience/digital eligibility beyond the former six-item limit. `scripts/results-check.mjs` verifies all eligible types, both alphabetical orders, both price orders, the top-right close button after scrolling, and returning to suggestions with sorting intact at desktop and mobile widths. The shopping dialog also offers a bottom “Back to gift suggestions” button.
+
+GitHub/PWA preparation: `npm run build` produced a 3.7 MB static web app from the original ~50 MB photo collection. Ten server test groups pass. Chromium and WebKit passed complete gift discovery, filtering, photos, shortlist, shopping and install-help flows at seven widths (320, 390, 600, 768, 820, 1024, 1366). Chromium passed offline reload, gift discovery and cached-photo checks. Automated Firefox launch failed due this host's headless graphics/runtime environment; no Firefox pass is claimed. WebKit represents Safari's engine; these viewport checks are not physical iPhone/iPad certification.
