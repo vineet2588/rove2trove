@@ -1,6 +1,9 @@
 // Editorial browsing guides, not merchant minimum prices or verified offers.
 // Official sources and review notes: STORE_SOURCES.md. Reviewed 2026-10-23.
 export const indiaStores=[
+ {name:'Studio Moya',url:'https://studiomoya.in/shop/',group:'craft',badge:'Independent craft & design studio',gifts:['interiors'],guide:1500,priceFilter:false,note:'Browse handcrafted wall art, clocks and artistic lighting as alternatives for the home. Confirm materials, dimensions and delivery.'},
+ {name:'iTokri',url:'https://itokri.com/pages/home-decor',group:'craft',badge:'Artisan craft store',gifts:['interiors'],guide:500,priceFilter:false,note:'Explore folk paintings, handmade wall decorations and artisan home accents. These are related decoration ideas, not an exact product match.'},
+ {name:'GiTAGGED',url:'https://www.gitagged.com/online-store/',group:'craft',badge:'Regional art & craft store',gifts:['interiors'],guide:1000,priceFilter:false,note:'Discover regional paintings, wall hangings and traditional handicrafts. Browse art and home collections and confirm the final price.'},
  {name:'IKEA India',url:'https://www.ikea.com/in/en/cat/home-decor-de001/',group:'marketplace',badge:'Homeware retailer',gifts:['interiors'],guide:500,priceFilter:false,note:'Browse IKEA India’s home decoration collection. Use retailer price filters and confirm delivery to the recipient’s PIN code.'},
  {name:'Nestasia',url:'https://nestasia.in/collections/home-decor',group:'craft',badge:'Indian home & lifestyle brand',gifts:['interiors'],guide:1000,priceFilter:false,note:'Decorative objects, vases and home accents. Check dimensions, materials and the final price.'},
  {name:'The India Craft House',url:'https://theindiacrafthouse.com/',group:'craft',badge:'Indian artisan craft store',gifts:['interiors'],guide:1500,priceFilter:false,note:'Indian handcrafted home and living gifts. Browse the relevant craft and home collections.'},

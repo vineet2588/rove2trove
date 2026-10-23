@@ -35,3 +35,12 @@ Official category pages opened and reviewed on 23 October 2026:
 - Chumbak: https://www.chumbak.com/collections/decor-living-best-selling — design-led decorative home accessories.
 
 These four destinations are category matched to Home & interiors. They use the existing editorial budget guides. No automatic retailer price-filter parameters are added to these new links, because their parameter support was not independently validated. Visitors can use the retailer's own controls. The directory now contains 18 stores.
+
+## Art and decoration additions
+
+Reviewed official online stores on 23 October 2026:
+- Studio Moya: https://studiomoya.in/shop/ — independent Indian studio offering handcrafted wall art, clocks and lighting.
+- iTokri: https://itokri.com/pages/home-decor — artisan home décor and folk paintings.
+- GiTAGGED: https://www.gitagged.com/online-store/ — regional art, paintings, wall hangings and handicrafts.
+
+These appear as related home/decoration shopping alternatives, not exact vase offers or suppliers for craft kits and workshops. Existing budget guides apply; unverified price filters are disabled. The directory contains 21 stores.
