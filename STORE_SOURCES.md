@@ -24,3 +24,14 @@ Reviewed 23 October 2026. Official websites were searched and opened to establis
 The thresholds in `public/india-stores.js` are editorial **browsing tiers**, not scraped minimum prices, product matches, exchange rates or promises of stock. They prevent expensive designer discovery from overwhelming a smaller budget. A user can explicitly include higher-budget stores; those are labeled and not given a misleading lower price cap. No live price feed is provided. Supported non-INR budgets use the app's existing illustrative currency factors, with that limitation displayed.
 
 Store eligibility uses the gift's category and original maximum brief budget, not its illustrative sample price. Budget and currency are saved with shortlisted gifts. Legacy saved gifts without these fields use their displayed sample price as an editable initial shopping budget. Workshop and digital gift links are preserved. The new directory is India-specific; no claim is made that other-country marketplace links are local small businesses. Swadesh and Titan are not labeled as small businesses.
+
+## Home décor additions
+
+Official category pages opened and reviewed on 23 October 2026:
+
+- IKEA India: https://www.ikea.com/in/en/cat/home-decor-de001/ — the Indian home decoration collection. Classified as a mainstream homeware retailer, not a small business.
+- Nestasia: https://nestasia.in/collections/home-decor — Indian home/lifestyle brand with vases and decorative objects.
+- The India Craft House: https://theindiacrafthouse.com/ — artisan handicrafts and home/living gifts.
+- Chumbak: https://www.chumbak.com/collections/decor-living-best-selling — design-led decorative home accessories.
+
+These four destinations are category matched to Home & interiors. They use the existing editorial budget guides. No automatic retailer price-filter parameters are added to these new links, because their parameter support was not independently validated. Visitors can use the retailer's own controls. The directory now contains 18 stores.
