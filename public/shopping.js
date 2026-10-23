@@ -1,16 +1,19 @@
-import {countryNames} from './countries.js';
+import {countryNames,budgetCurrencies} from './countries.js';
+import {curatedIndiaOptions} from './india-stores.js';
 // Fixed merchant destinations only; no model-generated URLs or claimed offers.
 const queries={tea:'ceramic tea set loose leaf tea',journal:'linen journal brass pen',camera:'instant camera',workshop:'pottery workshop',music:'music subscription gift card',garden:'herb garden kit',craft:'paper craft kit',story:'illustrated storybook collection',clothing:'cotton lounge set',accessories:'silk scarf',perfume:'fragrance discovery set',jewellery:'sculptural pendant necklace',shoes:'everyday sneakers',watch:'classic analogue watch',beauty:'skincare discovery set',fitness:'cork yoga mat strap',interiors:'ceramic vase',cooking:'baking tools gift set',gaming:'game store gift card',photography:'phone photography lens kit'};
 export const shoppingCountries=countryNames;
 export function giftCountry(gift){return gift.country==='EU'?'DE':Object.hasOwn(shoppingCountries,gift.country)?gift.country:({INR:'IN',USD:'US',GBP:'GB',AED:'AE',EUR:'DE'}[gift.currency]||'IN')}
-export function shoppingOptions(gift,country){
+export function shoppingOptions(gift,country,preferences={}){
  if(country==='EU')country='DE';if(!Object.hasOwn(shoppingCountries,country))throw new Error('Unsupported shopping country');
  const query=queries[gift.id]||'thoughtful gifts';const q=encodeURIComponent(query);const amazon={IN:'www.amazon.in',US:'www.amazon.com',GB:'www.amazon.co.uk',AE:'www.amazon.ae',DE:'www.amazon.de'}[country];
- const options=[];const add=(name,url,note,kind='Search gifts')=>options.push({name,url,note,kind});
+ const budget=preferences.budget??gift.shoppingBudget;const currency=preferences.currency??gift.shoppingCurrency??gift.currency;const budgetINR=Number.isFinite(budget)&&budget>0&&Object.hasOwn(budgetCurrencies,currency)?Math.floor(budget/budgetCurrencies[currency].factor*budgetCurrencies.INR.factor):null;
+ const curated=country==='IN'&&gift.type!=='Digital'?curatedIndiaOptions(gift,{budgetINR,includeHigherBudget:preferences.includeHigherBudget===true}):{options:[],hiddenCount:0};
+ const options=[...curated.options];const add=(name,url,note,kind='Search gifts')=>options.push({name,url,note,kind,group:'marketplace'});
  if(gift.id==='workshop'){
   add('GetYourGuide',`https://www.getyourguide.com/s/?q=${q}%20${encodeURIComponent(shoppingCountries[country])}`,'Choose a city and check workshop dates.','Search experiences');
   add('Viator',`https://www.viator.com/searchResults/all?text=${q}%20${encodeURIComponent(shoppingCountries[country])}`,'Check the location, age requirements and booking terms.','Search experiences');
-  return {query,options};
+  return {query,options,budgetINR,hiddenCount:curated.hiddenCount};
  }
  if(country==='IN'){
   const fashion={clothing:'lounge-wear',accessories:'scarves',jewellery:'pendants',shoes:'casual-shoes',watch:'watches'};
@@ -25,5 +28,5 @@ export function shoppingOptions(gift,country){
   add('Etsy',`https://www.etsy.com/search?q=${q}`,'Explore independent sellers; confirm shipping to your country.');
  }
  if(!options.length){add('Etsy',`https://www.etsy.com/search?q=${q}`,`Explore independent sellers; confirm shipping to ${shoppingCountries[country]}.`);add('eBay International',`https://www.ebay.com/sch/i.html?_nkw=${q}`,`Search international listings; set delivery to ${shoppingCountries[country]} and check import costs.`)}
- return {query,options};
+ return {query,options,budgetINR,hiddenCount:curated.hiddenCount};
 }

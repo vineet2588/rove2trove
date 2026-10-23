@@ -1,0 +1,23 @@
+// Editorial browsing guides, not merchant minimum prices or verified offers.
+// Official sources and review notes: STORE_SOURCES.md. Reviewed 2026-10-23.
+export const indiaStores=[
+ {name:'Titan',url:'https://www.titan.co.in/shop/watches?lang=en_IN',group:'craft',badge:'Indian watch brand',gifts:['watch'],guide:2000,note:'Official Titan watch store. Use its price and style filters; confirm the final price and warranty.'},
+ {name:'Argos Watches',url:'https://www.argoswatch.in/',group:'craft',badge:'Indian watch label',gifts:['watch'],guide:10000,note:'Indian automatic-watch label, distinct from the UK Argos retailer. Check specifications and service terms.'},
+ {name:'Jaipur Watch Company',url:'https://jaipur.watch/',group:'designer',badge:'Design & heritage watches',gifts:['watch'],guide:25000,note:'Design-led heritage and bespoke watches. Confirm model-specific pricing and availability.'},
+ {name:'Swadesh',url:'https://www.swadeshonline.com/',group:'craft',badge:'Indian craft retailer',gifts:['tea','clothing','accessories','jewellery','beauty','interiors','cooking'],guide:1500,note:'Indian textiles, craft, jewellery and homeware. Browse the relevant category.'},
+ {name:'Kashmir Box',url:'https://www.kashmirbox.com/collections/all',group:'craft',badge:'Regional craft',gifts:['tea','clothing','accessories','jewellery','interiors'],guide:1000,note:'Kashmiri textiles, accessories, tea and traditional home crafts.'},
+ {name:'Taroob',url:'https://taroob.com/collections/all',group:'designer',badge:'Designer label',gifts:['clothing','accessories'],guide:1500,note:'Designer ethnic clothing, stoles, scarves and silk squares.'},
+ {name:'Mortantra',url:'https://mortantra.com/collections/all',group:'craft',badge:'Jewellery studio',gifts:['jewellery'],guide:2500,note:'Indian handcrafted fashion jewellery. Confirm materials and the exact style.'},
+ {name:'Mora Taara',url:'https://morataara.com/collections/all',group:'craft',badge:'Home & gifting boutique',gifts:['tea','garden','interiors','cooking'],guide:1500,note:'Decor, tableware and planters. Plant-related matches may be planters rather than live plants.'},
+ {name:'ellementry',url:'https://www.ellementry.com/collections/gifting',group:'craft',badge:'Craft & home design',gifts:['tea','interiors','cooking'],guide:1000,note:'Handcrafted tableware, ceramics and considered gifts for the home.'},
+ {name:'Studio Coppre',url:'https://www.studiocoppre.com/collections/gifting',group:'craft',badge:'Artisan-led studio',gifts:['tea','jewellery','interiors','cooking'],guide:1500,note:'Handcrafted copper and brass objects, tableware and jewellery.'},
+ {name:'Nurserylive',url:'https://nurserylive.com/collections/all',group:'craft',badge:'Indian gardening store',gifts:['garden'],guide:500,note:'Live plants, gardening kits and pots. Check delivery to the recipient’s PIN code.'},
+ {name:'BINNI',url:'https://www.binni.co.in/collections/new-arrivals',group:'craft',badge:'Independent jewellery label',gifts:['jewellery'],guide:1200,note:'Fashion jewellery from a Mumbai-born label. Confirm metals, sizing and returns.'},
+ {name:'Nicobar',url:'https://www.nicobar.com/',group:'designer',badge:'Design-led label',gifts:['clothing','accessories','jewellery','tea','interiors','cooking'],guide:2500,note:'Design-led clothing, accessories and lifestyle gifting.'},
+ {name:'Ogaan',url:'https://www.ogaan.com/',group:'designer',badge:'Multi-designer boutique',gifts:['clothing','accessories','jewellery','shoes'],guide:10000,note:'Browse Indian designer labels, jewellery, accessories and footwear.'}
+];
+export function curatedIndiaOptions(gift,{budgetINR=null,includeHigherBudget=false}={}){
+ const matching=indiaStores.filter(store=>store.gifts.includes(gift.id));
+ const eligible=matching.filter(store=>budgetINR===null||store.guide<=budgetINR||includeHigherBudget);
+ return {hiddenCount:matching.length-eligible.length,options:eligible.sort((a,b)=>a.guide-b.guide||a.name.localeCompare(b.name)).map(store=>{const higherBudget=budgetINR!==null&&store.guide>budgetINR;let target=store.url;if(store.name==='Nicobar'&&gift.id==='accessories')target='https://www.nicobar.com/collections/all-accessories';const url=new URL(target);const priceFiltered=budgetINR!==null&&!higherBudget&&url.pathname.startsWith('/collections/');if(priceFiltered){url.searchParams.set('filter.v.price.lte',String(budgetINR));url.searchParams.set('sort_by','price-ascending');url.searchParams.set('currency','INR')}return {...store,url:url.href,kind:priceFiltered?'Browse with requested price cap':'Browse official store',priceFiltered,budgetGuideINR:store.guide,higherBudget}})};
+}

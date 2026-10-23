@@ -56,3 +56,7 @@ Recommendation filters operate on every eligible sample idea. Age, budget and ex
 ## Website and mobile/tablet app
 
 A GitHub Pages build and installable Progressive Web App are included. Run `npm ci`, `npm run build`, then `npm run preview:pages` to preview the static version. It works under `/rove2trove/` as well as other directory-based hosts. The build uses compressed WebP photos, a web app manifest, brand icons and an offline service worker. The public version uses on-device sample matching; optional OpenAI calls remain in the separate server version. See [deployment and device instructions](DEPLOYMENT.md).
+
+## Indian stores, designers and watch labels
+
+Indian gift shopping now includes a curated category-matched directory of Swadesh, Kashmir Box, Taroob, Mortantra, Mora Taara, ellementry, Studio Coppre, Nurserylive, BINNI, Nicobar, Ogaan, Titan, Argos Watches and Jaipur Watch Company. Users can choose Indian brands/independent stores, designers or marketplaces; edit their shopping budget/currency; and optionally include higher-budget stores. The original brief budget is carried into new recommendations and saved treasures. Editorial browsing tiers are clearly distinguished from real prices. Validated collection filters receive a requested INR price cap where supported; homepage-only browsing links remain clearly labeled. See [official sources and matching policy](STORE_SOURCES.md).
