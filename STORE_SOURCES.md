@@ -44,3 +44,16 @@ Reviewed official online stores on 23 October 2026:
 - GiTAGGED: https://www.gitagged.com/online-store/ — regional art, paintings, wall hangings and handicrafts.
 
 These appear as related home/decoration shopping alternatives, not exact vase offers or suppliers for craft kits and workshops. Existing budget guides apply; unverified price filters are disabled. The directory contains 21 stores.
+
+## Beauty and electronics additions — 23 October 2026
+
+- SUGAR Cosmetics: https://www.sugarcosmetics.com/ — Makeup & beauty brand.
+- 82°E: https://82e.com/ — Skincare & body care brand.
+- Hyphen: https://letshyphen.com/ — Skincare brand.
+- Kay Beauty: https://www.kaybeauty.com/ — Makeup brand.
+- Kama Ayurveda: https://www.kamaayurveda.com/in — Ayurvedic beauty brand.
+- The Body Shop: https://www.thebodyshop.in/ — International beauty brand.
+- Khadi Natural: https://www.khadinatural.com/ — Ayurvedic skin & hair care brand.
+- boAt: https://www.boat-lifestyle.com/ — Indian audio & electronics brand.
+
+Seven beauty stores match Beauty & skincare; The Body Shop also matches Perfumes. boAt matches the new physical audio idea in Music & tech, not digital subscriptions or cameras. Khadi Natural is the interpretation of the requested Khadi Ayurveda name. Brand-owned stores are not described as small businesses. 82°E has a prominent stock-check note because the reviewed homepage marked many products sold out. All eight use editorial budget guides and no unverified price filter parameters. The directory now contains 29 stores.

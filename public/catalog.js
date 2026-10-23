@@ -1,5 +1,6 @@
 import {countryNames,budgetCurrencies,defaultCurrency} from './countries.js';
 export const catalog = [
+ {id:'audio',name:'Sound for their everyday',subtitle:'Wireless headphones or earbuds · check compatibility',category:'Music & tech',interest:'Music & tech',type:'Physical',base:35,art:'music',tags:['Practical','Social','Playful'],ages:[13,120]},
  {id:'tea',name:'The slow-morning ritual',subtitle:'Ceramic tea set & loose-leaf tea',category:'Home & rituals',interest:'Food & drink',type:'Physical',base:68,art:'tea',color:'#e8dfcd',tags:['Mindful','Homebody'],ages:[13,120]},
  {id:'journal',name:'A place for possibility',subtitle:'Linen journal & brass pen',category:'Beautiful everyday',interest:'Books & writing',type:'Physical',base:38,art:'journal',color:'#e3e5da',tags:['Creative','Thoughtful'],ages:[8,120]},
  {id:'camera',name:'Memories in the making',subtitle:'Instant camera & a little adventure',category:'Little adventures',interest:'Travel & outdoors',type:'Physical',base:110,art:'camera',color:'#e7d8ca',tags:['Adventurous','Creative'],ages:[8,120]},

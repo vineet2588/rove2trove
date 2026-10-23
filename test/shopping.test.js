@@ -9,3 +9,17 @@ test('requested price caps use validated collection filters and selected currenc
 test('Indian watch retailers respect budget guides without claiming offers',()=>{const medium=shoppingOptions({id:'watch'},'IN',{budget:10000,currency:'INR'});assert(medium.options.some(o=>o.name==='Titan'));assert(medium.options.some(o=>o.name==='Argos Watches'));assert(!medium.options.some(o=>o.name==='Jaipur Watch Company'));const high=shoppingOptions({id:'watch'},'IN',{budget:30000,currency:'INR'});assert(high.options.some(o=>o.name==='Jaipur Watch Company'));assert(high.options.every(o=>!Object.hasOwn(o,'price')))});
 
 test('home decor includes IKEA and Indian homeware/craft businesses only for relevant gifts',()=>{const prefs={budget:10000,currency:'INR'};const decor=shoppingOptions({id:'interiors'},'IN',prefs).options;for(const name of ['IKEA India','Nestasia','The India Craft House','Chumbak','Mora Taara','Studio Coppre','ellementry'])assert(decor.some(o=>o.name===name),name);assert.equal(decor.find(o=>o.name==='IKEA India').group,'marketplace');for(const id of ['watch','jewellery','camera'])assert(!shoppingOptions({id},'IN',prefs).options.some(o=>o.name==='IKEA India'));assert(!shoppingOptions({id:'interiors'},'GB',prefs).options.some(o=>o.name==='IKEA India'));assert(!decor.find(o=>o.name==='Nestasia').priceFiltered);});
+
+test('beauty and audio brands match relevant physical gifts and budget preferences',()=>{
+ const prefs={budget:10000,currency:'INR'};
+ const beauty=shoppingOptions({id:'beauty',type:'Physical'},'IN',prefs).options;
+ for(const name of ['SUGAR Cosmetics','82°E','Hyphen','Kay Beauty','Kama Ayurveda','The Body Shop','Khadi Natural'])assert(beauty.some(o=>o.name===name),name);
+ assert(shoppingOptions({id:'perfume'},'IN',prefs).options.some(o=>o.name==='The Body Shop'));
+ const audio=catalog.find(g=>g.id==='audio');assert.equal(audio.type,'Physical');assert.equal(audio.interest,'Music & tech');
+ assert(shoppingOptions(audio,'IN',prefs).options.some(o=>o.name==='boAt'));
+ for(const id of ['camera','jewellery','watch','beauty','music'])assert(!shoppingOptions({id},'IN',prefs).options.some(o=>o.name==='boAt'));
+ assert(!shoppingOptions(audio,'GB',prefs).options.some(o=>o.name==='boAt'));
+ assert(!shoppingOptions(audio,'IN',{budget:500,currency:'INR'}).options.some(o=>o.name==='boAt'));
+ assert(shoppingOptions(audio,'IN',{budget:500,currency:'INR',includeHigherBudget:true}).options.some(o=>o.name==='boAt'&&o.higherBudget));
+ assert(beauty.filter(o=>['SUGAR Cosmetics','82°E','Hyphen','Kay Beauty','Kama Ayurveda','The Body Shop','Khadi Natural'].includes(o.name)).every(o=>!o.priceFiltered));
+});
